@@ -3,7 +3,7 @@ import { Project } from "./Project"; // Assurez-vous que le fichier est correct
 export const ProjectList = ({ projects }: { projects: Project[] }) => {
 
 
-    return (<section className="projects section-background">
+    return (<section className="projects section-background" id="projects">
             <h2>Projets</h2>
         <ul className="project-list">
                 {projects.map((project, index) => (

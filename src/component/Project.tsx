@@ -43,8 +43,8 @@ export const Project = (props: { project: Project }) => {
                         <h2>{props.project.name}</h2>
                         <img src={props.project.images[currentImageIndex]} alt={props.project.name} />
                         <div className="image-controls">
-                            <button onClick={handlePreviousImage}>Précédente</button>
-                            <button onClick={handleNextImage}>Suivante</button>
+                            <button className="projetButton" onClick={handlePreviousImage}><b>PRÉCÉDENTE</b></button>
+                            <button className="projetButton" onClick={handleNextImage}><b>SUIVANTE</b></button>
                         </div>
                         <p dangerouslySetInnerHTML={{ __html: props.project.description }}></p>
                         {props.project.link && <a href={props.project.link}>Lien vers le projet</a>}

@@ -323,7 +323,6 @@ main{
     img{
       width: 50%;
       height: auto;
-      background: blue;
     }
     a{
       padding: 10px 20px;
@@ -339,6 +338,23 @@ main{
     }
   }
 }
+.image-controls{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap:30px;
+}
+.projetButton{
+  padding:10px;
+  border:none;
+  background : rgba(92, 92, 92, 0.58);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.projetButton:hover{
+  transform: scale(1.05);
+}
+
 @media screen and (max-width: 550px) {
   .full-screen-project,.full-screen-skill{
     section{

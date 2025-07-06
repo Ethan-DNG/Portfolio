@@ -8,8 +8,8 @@ import cv from "./assets/CV.pdf"
 import photo from "./assets/Photo.jpg"
 import {ToolsList} from "./component/ToolsList.tsx";
 import {Tool} from"./component/Tool.tsx"
-import { faJava, faPython, faPhp, faReact, faHtml5, faCss3Alt, faJs, faCuttlefish } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { faJava, faPython, faPhp, faReact, faHtml5, faCss3Alt, faJs, faCuttlefish, faNodeJs, faVuejs, faGit, faGithub, faGitlab, faDocker } from "@fortawesome/free-brands-svg-icons";
+import { faDatabase, faLeaf } from "@fortawesome/free-solid-svg-icons";
 import {Footer} from "./component/Footer.tsx";
 import {Timeline} from "./component/Timeline.tsx"
 import {Skill} from "./component/Skill.tsx";
@@ -24,7 +24,12 @@ import wikispeed3 from "./assets/projects_images/Wikispeed/Wikispeed3.png"
 import portfolio1 from "./assets/projects_images/Portfolio/Portfolio1.png"
 import portfolio2 from "./assets/projects_images/Portfolio/Portfolio2.png"
 import portfolio3 from "./assets/projects_images/Portfolio/Portfolio3.png"
-
+import codex1 from "./assets/projects_images/Codex/img_1.png"
+import codex2 from "./assets/projects_images/Codex/img_2.png"
+import codex3 from "./assets/projects_images/Codex/img_3.png"
+import codex4 from "./assets/projects_images/Codex/img_4.png"
+import codex5 from "./assets/projects_images/Codex/img_5.png"
+import codex6 from "./assets/projects_images/Codex/img_6.png"
 
 
 
@@ -43,7 +48,15 @@ function App() {
     { name: "SQL", img: faDatabase },
     { name: "HTML", img: faHtml5 },
     { name: "CSS", img: faCss3Alt },
-    { name: "JavaScript", img: faJs }
+    { name: "JavaScript", img: faJs },
+    { name: "Vue.js", img: faVuejs },
+    { name: "Nuxt.js", img: faVuejs },
+    { name: "Node.js", img: faNodeJs },
+    { name: "Twig", img: faLeaf },
+    { name: "Git", img: faGit },
+    { name: "GitHub", img: faGithub },
+    { name: "GitLab", img: faGitlab },
+    { name: "Docker", img: faDocker },
   ];
 
 
@@ -67,6 +80,13 @@ function App() {
       image: portfolio1,
       link: undefined,
       images: [portfolio1, portfolio2, portfolio3]
+    },
+    {
+      name: "Codex Naturalis",
+      description: "Codex Naturalis est un jeu codé en <b>Java</b> en programmation orientée objet, reprenant le concept du jeu de société Codex Naturalis avec quelques ajouts. Le projet inclut la gestion des cartes, des règles du jeu, et des fonctionnalités supplémentaires comme des modes de jeu alternatifs. Ce projet a été réalisé en binôme lors de ma première année de <b>BUT Informatique</b>.",
+      image: codex5,
+      link: undefined,
+      images: [codex1, codex2, codex3,codex4,codex5,codex6]
     }
   ];
   const skills: Skill[]  = [

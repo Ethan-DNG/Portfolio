@@ -25,7 +25,7 @@ export const Timeline= () => {
   ];
 
   return (
-    <div className="timeline-container section-background">
+    <div className="timeline-container section-background" id="parcours">
       <h2 className="timeline-title">Parcours</h2>
       <div className="timeline">
         <div className="timeline-line"></div>
