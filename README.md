@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Portfolio de Ethan Duong
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur mon portfolio développé avec **React** !  
+Ce site présente une sélection de mes projets réalisés dans le cadre de mes études en BUT Informatique.
+## Fonctionnalités
 
-Currently, two official plugins are available:
+- Présentation des projets avec descriptions et technologies utilisées.
+- Design responsive pour une navigation fluide sur tous supports.
+- Interface simple et épurée.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies utilisées
 
-## Expanding the ESLint configuration
+- React
+- CSS 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation et lancement
 
-- Configure the top-level `parserOptions` property like this:
+```bash
+git clone https://github.com/ethan-dng/Portfolio.git
+cd Portfolio
+npm install
+npm run dev
+````
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Le site sera accessible à l’adresse indiquée dans la console (généralement http://localhost:5173).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Déploiement
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Le portfolio est déployé sur GitHub Pages et accessible ici :
+[https://ethan-dng.github.io/Portfolio/](https://ethan-dng.github.io/Portfolio/)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Structure du projet
+
+* `/src/components` : composants réutilisables
+* `/src/pages` : pages principales
+* `/src/assets` : images et icônes
+* `/src/data` : données des projets
+
+## Contact
+
+Pour me contacter : \[[duongethan1@gmail.com](mailto:duongethan1@gmail.com)]
+LinkedIn : [https://linkedin.com/in/duongethan](https://linkedin.com/in/duongethan)
+
+---
+
+Merci de votre visite !
