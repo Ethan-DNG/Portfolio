@@ -103,7 +103,7 @@ function App() {
       <Navbar />
       <main>
     <HeroHeader/>
-      <AboutMe img={photo} cv={cv} text={"Actuellement en deuxième année de BUT Informatique, je me passionne pour le développement web et les technologies émergentes. Toujours à la recherche de nouveaux défis, j’aime concevoir des solutions créatives et optimisées pour améliorer l’expérience utilisateur."}
+      <AboutMe img={photo} cv={cv} text={"Actuellement en troisième année de BUT Informatique, je me passionne pour le développement web et les technologies émergentes. Toujours à la recherche de nouveaux défis, j’aime concevoir des solutions créatives et optimisées pour améliorer l’expérience utilisateur."}
       />
         <Timeline/>
         <ProjectList projects={projects} />
