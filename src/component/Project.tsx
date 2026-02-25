@@ -2,7 +2,10 @@ import { useState } from 'react'
 
 export interface Project {
     name: string;
-    description: string; // Contiendra du HTML
+    description: string;
+    technologies?: string[];
+    features?: string[];
+    context?: string;
     image: string;
     link: string | undefined;
     images: string[];
@@ -40,14 +43,55 @@ export const Project = (props: { project: Project }) => {
             {fullScreen && (
                 <div onClick={() => setFullScreen(false)} className="full-screen-project">
                     <section onClick={(e) => e.stopPropagation()}>
+                        <button className="close-modal-button" onClick={() => setFullScreen(false)}>
+                            ✕
+                        </button>
                         <h2>{props.project.name}</h2>
-                        <img src={props.project.images[currentImageIndex]} alt={props.project.name} />
-                        <div className="image-controls">
-                            <button className="projetButton" onClick={handlePreviousImage}><b>PRÉCÉDENTE</b></button>
-                            <button className="projetButton" onClick={handleNextImage}><b>SUIVANTE</b></button>
+                        <div className="project-image-container">
+                            <img src={props.project.images[currentImageIndex]} alt={props.project.name} />
                         </div>
-                        <p dangerouslySetInnerHTML={{ __html: props.project.description }}></p>
-                        {props.project.link && <a href={props.project.link}>Lien vers le projet</a>}
+                        <div className="image-controls">
+                            <button className="projetButton" onClick={handlePreviousImage}>
+                                <span>←</span> PRÉCÉDENTE
+                            </button>
+                            <span className="image-counter">{currentImageIndex + 1} / {props.project.images.length}</span>
+                            <button className="projetButton" onClick={handleNextImage}>
+                                SUIVANTE <span>→</span>
+                            </button>
+                        </div>
+                        <div className="project-description">
+                            <p className="project-intro" dangerouslySetInnerHTML={{ __html: props.project.description }}></p>
+
+                            {props.project.technologies && props.project.technologies.length > 0 && (
+                                <div className="project-section">
+                                    <h4>🛠️ Technologies utilisées</h4>
+                                    <div className="tech-tags">
+                                        {props.project.technologies.map((tech, index) => (
+                                            <span key={index} className="tech-tag">{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {props.project.features && props.project.features.length > 0 && (
+                                <div className="project-section">
+                                    <h4>✨ Fonctionnalités principales</h4>
+                                    <ul className="features-list">
+                                        {props.project.features.map((feature, index) => (
+                                            <li key={index}>{feature}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {props.project.context && (
+                                <div className="project-section project-context">
+                                    <h4>📋 Contexte</h4>
+                                    <p>{props.project.context}</p>
+                                </div>
+                            )}
+                        </div>
+                        {props.project.link && <a href={props.project.link} className="project-link">Voir le projet</a>}
                     </section>
                 </div>
             )}

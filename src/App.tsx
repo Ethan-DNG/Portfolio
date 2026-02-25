@@ -1,19 +1,19 @@
 import './App.css'
-import {HeroHeader} from "./component/HeroHeader.tsx";
-import {AboutMe} from "./component/AboutMe.tsx";
-import {Project} from "./component/Project.tsx";
-import {ProjectList} from "./component/ProjectList.tsx";
-import {Navbar} from "./component/Navbar.tsx";
+import { HeroHeader } from "./component/HeroHeader.tsx";
+import { AboutMe } from "./component/AboutMe.tsx";
+import { Project } from "./component/Project.tsx";
+import { ProjectList } from "./component/ProjectList.tsx";
+import { Navbar } from "./component/Navbar.tsx";
 import cv from "./assets/CV.pdf"
 import photo from "./assets/Photo.jpg"
-import {ToolsList} from "./component/ToolsList.tsx";
-import {Tool} from"./component/Tool.tsx"
+import { ToolsList } from "./component/ToolsList.tsx";
+import { Tool } from "./component/Tool.tsx"
 import { faJava, faPython, faPhp, faReact, faHtml5, faCss3Alt, faJs, faCuttlefish, faNodeJs, faVuejs, faGit, faGithub, faGitlab, faDocker } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase, faLeaf } from "@fortawesome/free-solid-svg-icons";
-import {Footer} from "./component/Footer.tsx";
-import {Timeline} from "./component/Timeline.tsx"
-import {Skill} from "./component/Skill.tsx";
-import {SkillsList} from "./component/SkillsList.tsx";
+import { Footer } from "./component/Footer.tsx";
+import { Timeline } from "./component/Timeline.tsx"
+import { Skill } from "./component/Skill.tsx";
+import { SkillsList } from "./component/SkillsList.tsx";
 import travia1 from "./assets/projects_images/Travia/TraviaHome.png"
 import travia2 from "./assets/projects_images/Travia/TraviaLoading.png"
 import travia3 from "./assets/projects_images/Travia/TraviaPurchase.png"
@@ -30,6 +30,10 @@ import codex3 from "./assets/projects_images/Codex/img_3.png"
 import codex4 from "./assets/projects_images/Codex/img_4.png"
 import codex5 from "./assets/projects_images/Codex/img_5.png"
 import codex6 from "./assets/projects_images/Codex/img_6.png"
+import qix1 from "./assets/projects_images/QIX/Qix1.png"
+import qix2 from "./assets/projects_images/QIX/Qix2.png"
+import qix3 from "./assets/projects_images/QIX/Qix3.png"
+import qix4 from "./assets/projects_images/QIX/Qix4.png"
 
 
 
@@ -62,55 +66,133 @@ function App() {
 
   const projects: Project[] = [{
     name: "Travia",
-    description: "Travia est un site web immersif dans l’univers de Star Wars, permettant aux utilisateurs de réserver des billets pour des navettes interplanétaires. Développé avec <b>PHP</b>, <b>HTML</b>, <b>CSS</b> et <b>JavaScript</b>, il repose sur une base de données <b>MySQL</b> pour la gestion des réservations. Que vous souhaitiez explorer Coruscant, Tatooine ou Endor, Travia vous transporte au cœur de l’aventure interstellaire avec un système de réservation efficace et immersif. Ce projet a été développé en groupe de trois.",
+    description: "Travia est un site web immersif dans l'univers de Star Wars, permettant aux utilisateurs de réserver des billets pour des navettes interplanétaires vers différentes planètes emblématiques de la saga.",
+    technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    features: [
+      "Système de réservation de billets pour navettes interplanétaires",
+      "Base de données pour la gestion des réservations",
+      "Interface immersive dans l'univers Star Wars",
+      "Navigation entre différentes destinations (Coruscant, Tatooine, Endor)"
+    ],
+    context: "Projet développé en groupe de trois lors de ma formation en BUT Informatique.",
     image: travia1,
     link: undefined,
-    images: [travia1,travia2,travia3,travia4]
+    images: [travia1, travia2, travia3, travia4]
   },
-    {
-      name: "Wikispeed",
-      description: "Wikispeed est un jeu multijoueur développé en <b>React</b> et <b>Node.js</b>. Dans ce jeu, les joueurs reçoivent une liste d'articles <b>Wikipedia</b> et doivent les atteindre le plus rapidement possible en parcourant les liens. Les joueurs peuvent utiliser des artéfacts, qui peuvent être des bonus ou des malus, pour influencer le jeu. Le mode solo est disponible, mais le jeu utilise également <b>WebSocket</b> pour permettre le jeu en multijoueur en temps réel. Ce projet a été développé en groupe de quatre.",
-      image: wikispeed1,
-      link: undefined,
-      images: [wikispeed1,wikispeed2,wikispeed3]
-    },
-    {
-      name: "Mon Portfolio",
-      description: "Mon Portfolio est un site web que j'ai codé moi-même en <b>React</b>. Ce projet présente mes compétences, mes réalisations et mes projets. Le site utilise des technologies comme <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, ainsi que des outils comme <b>React</b> pour la gestion dynamique du contenu et des animations. Le design est responsive, ce qui permet de consulter le portfolio sur différents appareils. Il met également en valeur mon expérience en développement web et mes projets précédents.",
-      image: portfolio1,
-      link: undefined,
-      images: [portfolio1, portfolio2, portfolio3]
-    },
-    {
-      name: "Codex Naturalis",
-      description: "Codex Naturalis est un jeu codé en <b>Java</b> en programmation orientée objet, reprenant le concept du jeu de société Codex Naturalis avec quelques ajouts. Le projet inclut la gestion des cartes, des règles du jeu, et des fonctionnalités supplémentaires comme des modes de jeu alternatifs. Ce projet a été réalisé en binôme lors de ma première année de <b>BUT Informatique</b>.",
-      image: codex5,
-      link: undefined,
-      images: [codex1, codex2, codex3,codex4,codex5,codex6]
-    }
+  {
+    name: "Wikispeed",
+    description: "Wikispeed est un jeu multijoueur innovant où les joueurs doivent atteindre des articles Wikipedia cibles le plus rapidement possible en naviguant à travers les liens hypertextes.",
+    technologies: ["React", "Node.js", "WebSocket"],
+    features: [
+      "Mode solo et multijoueur en temps réel",
+      "Système d'artéfacts (bonus et malus) pour influencer le jeu",
+      "Navigation dynamique entre articles Wikipedia",
+      "Communication temps réel via WebSocket"
+    ],
+    context: "Projet développé en équipe de quatre personnes.",
+    image: wikispeed1,
+    link: undefined,
+    images: [wikispeed1, wikispeed2, wikispeed3]
+  },
+  {
+    name: "Mon Portfolio",
+    description: "Site web personnel présentant mes compétences, réalisations et projets de développement. Design moderne, responsive et animations fluides.",
+    technologies: ["React", "TypeScript", "HTML", "CSS", "Vite"],
+    features: [
+      "Design responsive adapté à tous les appareils",
+      "Gestion dynamique du contenu avec React",
+      "Animations et transitions fluides",
+      "Présentation interactive des projets et compétences"
+    ],
+    context: "Projet personnel développé pour mettre en valeur mon parcours et mes compétences en développement web.",
+    image: portfolio1,
+    link: undefined,
+    images: [portfolio1, portfolio2, portfolio3]
+  },
+  {
+    name: "Codex Naturalis",
+    description: "Adaptation numérique du jeu de société Codex Naturalis avec des fonctionnalités supplémentaires. Développement en programmation orientée objet avec Java.",
+    technologies: ["Java", "POO (Programmation Orientée Objet)"],
+    features: [
+      "Gestion complète des cartes et règles du jeu",
+      "Modes de jeu alternatifs",
+      "Interface de jeu interactive",
+      "Respect des principes de la POO"
+    ],
+    context: "Projet réalisé en binôme lors de ma première année de BUT Informatique.",
+    image: codex5,
+    link: undefined,
+    images: [codex1, codex2, codex3, codex4, codex5, codex6]
+  },
+  {
+    name: "QIX",
+    description: "Remake complet du jeu rétro arcade QIX avec une interface moderne. Implémentation de fonctionnalités avancées incluant un système de sauvegarde, des bonus dynamiques et un mode compétitif pour deux joueurs.",
+    technologies: ["Python", "Pygame"],
+    features: [
+      "Recréation fidèle du gameplay original du jeu QIX",
+      "Système de sauvegarde et de progression",
+      "Gestion de bonus dynamiques et power-ups",
+      "Mode compétitif à deux joueurs",
+      "Interface graphique moderne et intuitive"
+    ],
+    context: "Projet développé en binôme pendant ma formation.",
+    image: qix1,
+    link: undefined,
+    images: [qix1, qix2, qix3, qix4]
+  }
   ];
-  const skills: Skill[]  = [
-    { name: "Réaliser", description: "Partir des exigences et aller jusqu'à une application complète", shortDescription: "Créer une application complète" },
-    { name: "Optimiser", description: "Sélectionner les algorithmes adéquats pour répondre à un problème donné", shortDescription: "Choisir les bons algorithmes" },
-    { name: "Administrer", description: "Déployer des services dans une architecture réseau", shortDescription: "Gérer les services réseau" },
-    { name: "Gérer", description: "Optimiser une base de données, interagir avec une application et mettre en œuvre la sécurité", shortDescription: "Gérer et sécuriser les données" },
-    { name: "Conduire", description: "Appliquer une démarche de suivi de projet en fonction des besoins et métiers des clients et des utilisateurs", shortDescription: "Suivre un projet informatique" },
-    { name: "Collaborer", description: "Situer son rôle au sein d'une équipe informatique", shortDescription: "Travailler en équipe IT" }
+  const skills: Skill[] = [
+    {
+      name: "Réaliser",
+      description: "Concevoir, développer et valider des applications complètes en partant des exigences utilisateur jusqu'à la mise en production. Maîtrise du cycle de développement complet avec les technologies modernes.",
+      shortDescription: "Concevoir et développer des applications",
+      projects: ["Travia (PHP, MySQL)", "Wikispeed (React, Node.js, WebSocket)", "Portfolio (React)", "QIX (Python, Pygame)"]
+    },
+    {
+      name: "Optimiser",
+      description: "Analyser et optimiser les performances des applications en sélectionnant les algorithmes et structures de données appropriés. Garantir l'efficacité et la scalabilité des solutions.",
+      shortDescription: "Optimiser les performances",
+      projects: ["Codex Naturalis (Java OOP)", "Wikispeed (temps réel)", "QIX (gameplay temps réel)"]
+    },
+    {
+      name: "Administrer",
+      description: "Déployer et administrer des services dans une infrastructure réseau. Gérer les environnements de développement, staging et production avec les outils DevOps modernes.",
+      shortDescription: "Gérer l'infrastructure réseau",
+      projects: ["TP Réseaux (configuration routeurs/switch)", "TP Services réseau (DHCP, DNS, HTTP)"]
+    },
+    {
+      name: "Gérer",
+      description: "Concevoir et optimiser des bases de données relationnelles et NoSQL. Implémenter la sécurité des données et garantir l'intégrité des informations tout en assurant des performances optimales.",
+      shortDescription: "Gérer et sécuriser les données",
+      projects: ["Travia (MySQL)", "Isart Digital (gestion pédagogique)"]
+    },
+    {
+      name: "Conduire",
+      description: "Piloter des projets informatiques en appliquant les méthodologies agiles. Comprendre et traduire les besoins métiers en solutions techniques adaptées.",
+      shortDescription: "Piloter des projets IT",
+      projects: ["Refonte menu navigation (EasyVista)", "Projets universitaires en équipe"]
+    },
+    {
+      name: "Collaborer",
+      description: "Travailler efficacement au sein d'équipes pluridisciplinaires. Utiliser les outils de versioning (Git) et communiquer de manière claire avec les différents acteurs du projet.",
+      shortDescription: "Collaborer en équipe IT",
+      projects: ["EasyVista (équipe React/PHP)", "Wikispeed (équipe de 4)", "Travia (équipe de 3)", "QIX (équipe de 2)"]
+    }
   ];
 
   return (
     <>
       <Navbar />
       <main>
-    <HeroHeader/>
-      <AboutMe img={photo} cv={cv} text={"Actuellement en troisième année de BUT Informatique, je me passionne pour le développement web et les technologies émergentes. Toujours à la recherche de nouveaux défis, j’aime concevoir des solutions créatives et optimisées pour améliorer l’expérience utilisateur."}
-      />
-        <Timeline/>
+        <HeroHeader />
+        <AboutMe img={photo} cv={cv} text={"Actuellement en troisième année de BUT Informatique, je me passionne pour le développement web et les technologies émergentes. Toujours à la recherche de nouveaux défis, j’aime concevoir des solutions créatives et optimisées pour améliorer l’expérience utilisateur."}
+        />
+        <Timeline />
         <ProjectList projects={projects} />
-        <ToolsList toolList={tools}/>
+        <ToolsList toolList={tools} />
         <SkillsList skills={skills} />
       </main>
-      <Footer/>
+      <Footer />
 
     </>
   )
