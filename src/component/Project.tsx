@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useLang } from '../context/LanguageContext';
 
 export interface Project {
     name: string;
-    description: string;
+    description?: string;
     technologies?: string[];
     features?: string[];
     context?: string;
@@ -12,89 +13,139 @@ export interface Project {
 }
 
 export const Project = (props: { project: Project }) => {
-    const [fullScreen, setFullScreen] = useState<boolean>(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // État pour suivre l'image affichée
+    const { t } = useLang();
+    const m = t.projects.modal;
 
-    const handleNextImage = () => {
-        // Passage à l'image suivante
-        if (currentImageIndex < props.project.images.length - 1) {
-            setCurrentImageIndex(currentImageIndex + 1);
-        } else {
-            setCurrentImageIndex(0); // Retour à la première image si on arrive à la fin
-        }
-    };
+    // Look up translated content if available, fallback to props
+    const projectName = props.project.name as keyof typeof t.projects.items;
+    const translatedProject = t.projects.items[projectName];
 
-    const handlePreviousImage = () => {
-        // Passage à l'image précédente
-        if (currentImageIndex > 0) {
-            setCurrentImageIndex(currentImageIndex - 1);
-        } else {
-            setCurrentImageIndex(props.project.images.length - 1); // Retour à la dernière image
-        }
-    };
+    const description = translatedProject?.description || props.project.description || '';
+    const features = translatedProject?.features || props.project.features || [];
+    const context = translatedProject?.context || props.project.context;
+
+    const [fullScreen, setFullScreen] = useState(false);
+    const [currentImageIndex, setIndex] = useState(0);
+    const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+
+    const handleNext = () =>
+        setIndex((i) => (i < props.project.images.length - 1 ? i + 1 : 0));
+    const handlePrev = () =>
+        setIndex((i) => (i > 0 ? i - 1 : props.project.images.length - 1));
+
+    const currentSrc = props.project.images[currentImageIndex];
 
     return (
         <>
-            <div className="project" onClick={() => setFullScreen(true)}>
+            {/* Project card */}
+            <div className="project" onClick={() => { setFullScreen(true); setIndex(0); }}>
                 <img src={props.project.image} alt={props.project.name} />
+                <span className="project-view-hint">{m.view}</span>
                 <p>{props.project.name}</p>
             </div>
 
+            {/* Full-screen modal */}
             {fullScreen && (
                 <div onClick={() => setFullScreen(false)} className="full-screen-project">
                     <section onClick={(e) => e.stopPropagation()}>
-                        <button className="close-modal-button" onClick={() => setFullScreen(false)}>
-                            ✕
-                        </button>
+                        <button className="close-modal-button" onClick={() => setFullScreen(false)}>✕</button>
+
                         <h2>{props.project.name}</h2>
-                        <div className="project-image-container">
-                            <img src={props.project.images[currentImageIndex]} alt={props.project.name} />
+
+                        {/* Clickable image */}
+                        <div
+                            className="project-image-container project-image-container--clickable"
+                            onClick={() => setZoomedImage(currentSrc)}
+                            title={m.zoom_hint}
+                        >
+                            <img src={currentSrc} alt={`${props.project.name} — ${currentImageIndex + 1}`} />
+                            <div className="zoom-overlay-hint">
+                                <span>🔍</span> {m.zoom_hint}
+                            </div>
                         </div>
+
+                        {/* Image controls */}
                         <div className="image-controls">
-                            <button className="projetButton" onClick={handlePreviousImage}>
-                                <span>←</span> PRÉCÉDENTE
+                            <button className="projetButton" onClick={handlePrev}>
+                                <span>←</span> {m.prev}
                             </button>
-                            <span className="image-counter">{currentImageIndex + 1} / {props.project.images.length}</span>
-                            <button className="projetButton" onClick={handleNextImage}>
-                                SUIVANTE <span>→</span>
+                            <span className="image-counter">
+                                {currentImageIndex + 1} / {props.project.images.length}
+                            </span>
+                            <button className="projetButton" onClick={handleNext}>
+                                {m.next} <span>→</span>
                             </button>
                         </div>
+
+                        {/* Description */}
                         <div className="project-description">
-                            <p className="project-intro" dangerouslySetInnerHTML={{ __html: props.project.description }}></p>
+                            <p className="project-intro" dangerouslySetInnerHTML={{ __html: description }} />
 
                             {props.project.technologies && props.project.technologies.length > 0 && (
                                 <div className="project-section">
-                                    <h4>🛠️ Technologies utilisées</h4>
+                                    <h4>{m.technologies}</h4>
                                     <div className="tech-tags">
-                                        {props.project.technologies.map((tech, index) => (
-                                            <span key={index} className="tech-tag">{tech}</span>
+                                        {props.project.technologies.map((tech, i) => (
+                                            <span key={i} className="tech-tag">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
                             )}
 
-                            {props.project.features && props.project.features.length > 0 && (
+                            {features.length > 0 && (
                                 <div className="project-section">
-                                    <h4>✨ Fonctionnalités principales</h4>
+                                    <h4>{m.features}</h4>
                                     <ul className="features-list">
-                                        {props.project.features.map((feature, index) => (
-                                            <li key={index}>{feature}</li>
+                                        {features.map((f, i) => (
+                                            <li key={i}>{f}</li>
                                         ))}
                                     </ul>
                                 </div>
                             )}
 
-                            {props.project.context && (
+                            {context && (
                                 <div className="project-section project-context">
-                                    <h4>📋 Contexte</h4>
-                                    <p>{props.project.context}</p>
+                                    <h4>{m.context}</h4>
+                                    <p>{context}</p>
                                 </div>
                             )}
                         </div>
-                        {props.project.link && <a href={props.project.link} className="project-link">Voir le projet</a>}
+
+                        {props.project.link && (
+                            <a href={props.project.link} className="project-link" target="_blank" rel="noopener noreferrer">
+                                {m.view}
+                            </a>
+                        )}
                     </section>
+                </div>
+            )}
+
+            {/* Image lightbox */}
+            {zoomedImage && (
+                <div
+                    className="image-lightbox"
+                    onClick={() => setZoomedImage(null)}
+                    aria-label="Fermer l'image agrandie"
+                >
+                    <button
+                        className="lightbox-close"
+                        onClick={() => setZoomedImage(null)}
+                        aria-label="Fermer"
+                    >
+                        ✕
+                    </button>
+                    <img
+                        src={zoomedImage}
+                        alt="Image agrandie"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <p className="lightbox-hint">
+                        {props.project.images.length > 1
+                            ? `${currentImageIndex + 1} / ${props.project.images.length}`
+                            : ''}
+                    </p>
                 </div>
             )}
         </>
     );
-}
+};

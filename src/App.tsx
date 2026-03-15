@@ -1,8 +1,7 @@
 import './App.css'
 import { HeroHeader } from "./component/HeroHeader.tsx";
 import { AboutMe } from "./component/AboutMe.tsx";
-import { Project } from "./component/Project.tsx";
-import { ProjectList } from "./component/ProjectList.tsx";
+import { CategorizedProject, ProjectList } from "./component/ProjectList.tsx";
 import { Navbar } from "./component/Navbar.tsx";
 import cv from "./assets/CV.pdf"
 import photo from "./assets/Photo.jpg"
@@ -12,8 +11,10 @@ import { faJava, faPython, faPhp, faReact, faHtml5, faCss3Alt, faJs, faCuttlefis
 import { faDatabase, faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { Footer } from "./component/Footer.tsx";
 import { Timeline } from "./component/Timeline.tsx"
+import { SkillsWheel } from "./component/SkillsWheel.tsx";
 import { Skill } from "./component/Skill.tsx";
-import { SkillsList } from "./component/SkillsList.tsx";
+
+// ─── Project images ───────────────────────────────────────────────────────────
 import travia1 from "./assets/projects_images/Travia/TraviaHome.png"
 import travia2 from "./assets/projects_images/Travia/TraviaLoading.png"
 import travia3 from "./assets/projects_images/Travia/TraviaPurchase.png"
@@ -21,9 +22,11 @@ import travia4 from "./assets/projects_images/Travia/TraviaTickets.png"
 import wikispeed1 from "./assets/projects_images/Wikispeed/Wikispeed1.png"
 import wikispeed2 from "./assets/projects_images/Wikispeed/Wikispeed2.png"
 import wikispeed3 from "./assets/projects_images/Wikispeed/Wikispeed3.png"
-import portfolio1 from "./assets/projects_images/Portfolio/Portfolio1.png"
-import portfolio2 from "./assets/projects_images/Portfolio/Portfolio2.png"
-import portfolio3 from "./assets/projects_images/Portfolio/Portfolio3.png"
+import umeal1 from "./assets/projects_images/Umeal/Umeal_1.png"
+import umeal2 from "./assets/projects_images/Umeal/Umeal_2.png"
+import umeal3 from "./assets/projects_images/Umeal/Umeal_3.png"
+import umeal4 from "./assets/projects_images/Umeal/Umeal_4.png"
+import umeal5 from "./assets/projects_images/Umeal/Umeal_5.png"
 import codex1 from "./assets/projects_images/Codex/img_1.png"
 import codex2 from "./assets/projects_images/Codex/img_2.png"
 import codex3 from "./assets/projects_images/Codex/img_3.png"
@@ -35,14 +38,9 @@ import qix2 from "./assets/projects_images/QIX/Qix2.png"
 import qix3 from "./assets/projects_images/QIX/Qix3.png"
 import qix4 from "./assets/projects_images/QIX/Qix4.png"
 
-
-
-
-
-
-
 function App() {
 
+  // ─── Tools ───────────────────────────────────────────────────────────────
   const tools: Tool[] = [
     { name: "Java", img: faJava },
     { name: "React", img: faReact },
@@ -63,84 +61,74 @@ function App() {
     { name: "Docker", img: faDocker },
   ];
 
+  // ─── Projects ─────────────────────────────────────────────────────────────
+  // To add a project, simply push a new object to this array.
+  // Set `category` to: 'BUT1' | 'BUT2' | 'BUT3' | 'Perso'
+  const projects: CategorizedProject[] = [
 
-  const projects: Project[] = [{
-    name: "Travia",
-    description: "Travia est un site web immersif dans l'univers de Star Wars, permettant aux utilisateurs de réserver des billets pour des navettes interplanétaires vers différentes planètes emblématiques de la saga.",
-    technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-    features: [
-      "Système de réservation de billets pour navettes interplanétaires",
-      "Base de données pour la gestion des réservations",
-      "Interface immersive dans l'univers Star Wars",
-      "Navigation entre différentes destinations (Coruscant, Tatooine, Endor)"
-    ],
-    context: "Projet développé en groupe de trois lors de ma formation en BUT Informatique.",
-    image: travia1,
-    link: undefined,
-    images: [travia1, travia2, travia3, travia4]
-  },
-  {
-    name: "Wikispeed",
-    description: "Wikispeed est un jeu multijoueur innovant où les joueurs doivent atteindre des articles Wikipedia cibles le plus rapidement possible en naviguant à travers les liens hypertextes.",
-    technologies: ["React", "Node.js", "WebSocket"],
-    features: [
-      "Mode solo et multijoueur en temps réel",
-      "Système d'artéfacts (bonus et malus) pour influencer le jeu",
-      "Navigation dynamique entre articles Wikipedia",
-      "Communication temps réel via WebSocket"
-    ],
-    context: "Projet développé en équipe de quatre personnes.",
-    image: wikispeed1,
-    link: undefined,
-    images: [wikispeed1, wikispeed2, wikispeed3]
-  },
-  {
-    name: "Mon Portfolio",
-    description: "Site web personnel présentant mes compétences, réalisations et projets de développement. Design moderne, responsive et animations fluides.",
-    technologies: ["React", "TypeScript", "HTML", "CSS", "Vite"],
-    features: [
-      "Design responsive adapté à tous les appareils",
-      "Gestion dynamique du contenu avec React",
-      "Animations et transitions fluides",
-      "Présentation interactive des projets et compétences"
-    ],
-    context: "Projet personnel développé pour mettre en valeur mon parcours et mes compétences en développement web.",
-    image: portfolio1,
-    link: undefined,
-    images: [portfolio1, portfolio2, portfolio3]
-  },
-  {
-    name: "Codex Naturalis",
-    description: "Adaptation numérique du jeu de société Codex Naturalis avec des fonctionnalités supplémentaires. Développement en programmation orientée objet avec Java.",
-    technologies: ["Java", "POO (Programmation Orientée Objet)"],
-    features: [
-      "Gestion complète des cartes et règles du jeu",
-      "Modes de jeu alternatifs",
-      "Interface de jeu interactive",
-      "Respect des principes de la POO"
-    ],
-    context: "Projet réalisé en binôme lors de ma première année de BUT Informatique.",
-    image: codex5,
-    link: undefined,
-    images: [codex1, codex2, codex3, codex4, codex5, codex6]
-  },
-  {
-    name: "QIX",
-    description: "Remake complet du jeu rétro arcade QIX avec une interface moderne. Implémentation de fonctionnalités avancées incluant un système de sauvegarde, des bonus dynamiques et un mode compétitif pour deux joueurs.",
-    technologies: ["Python", "Pygame"],
-    features: [
-      "Recréation fidèle du gameplay original du jeu QIX",
-      "Système de sauvegarde et de progression",
-      "Gestion de bonus dynamiques et power-ups",
-      "Mode compétitif à deux joueurs",
-      "Interface graphique moderne et intuitive"
-    ],
-    context: "Projet développé en binôme pendant ma formation.",
-    image: qix1,
-    link: undefined,
-    images: [qix1, qix2, qix3, qix4]
-  }
+    // ── BUT 1 ────────────────────────────────────────────────────────────────
+    {
+      category: 'BUT2',
+      name: "Travia",
+      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+      image: travia1,
+      link: undefined,
+      images: [travia1, travia2, travia3, travia4],
+    },
+    {
+      category: 'BUT1',
+      name: "Codex Naturalis",
+      technologies: ["Java", "POO (Programmation Orientée Objet)"],
+      image: codex5,
+      link: undefined,
+      images: [codex1, codex2, codex3, codex4, codex5, codex6],
+    },
+    {
+      category: 'BUT1',
+      name: "QIX",
+      technologies: ["Python", "Pygame"],
+      image: qix1,
+      link: undefined,
+      images: [qix1, qix2, qix3, qix4],
+    },
+
+    // ── BUT 2 ────────────────────────────────────────────────────────────────
+    {
+      category: 'BUT2',
+      name: "Wikispeed",
+      technologies: ["React", "Node.js", "WebSocket"],
+      image: wikispeed1,
+      link: undefined,
+      images: [wikispeed1, wikispeed2, wikispeed3],
+    },
+
+    // ── BUT 3 ─────────────────────────────────────────────────────────────────
+    {
+      category: 'BUT3',
+      name: "Umeal",
+      technologies: ["React", "Express.js", "Node.js", "React Native", "MongoDB", "Vitest"],
+      image: umeal1,
+      link: undefined,
+      images: [umeal1, umeal2, umeal3, umeal4, umeal5],
+    },
+
+    // ── Perso ─────────────────────────────────────────────────────────────────
+    // Ajouter ici les projets personnels au fur et à mesure
+    // Exemple :
+    // {
+    //   category: 'Perso',
+    //   name: "Mon projet perso",
+    //   description: "...",
+    //   technologies: ["..."],
+    //   features: ["..."],
+    //   context: "Projet personnel.",
+    //   image: monImage,
+    //   link: "https://mon-lien.com",
+    //   images: [monImage],
+    // },
   ];
+
+  // ─── Skills ───────────────────────────────────────────────────────────────
   const skills: Skill[] = [
     {
       name: "Réaliser",
@@ -185,15 +173,13 @@ function App() {
       <Navbar />
       <main>
         <HeroHeader />
-        <AboutMe img={photo} cv={cv} text={"Actuellement en troisième année de BUT Informatique, je me passionne pour le développement web et les technologies émergentes. Toujours à la recherche de nouveaux défis, j’aime concevoir des solutions créatives et optimisées pour améliorer l’expérience utilisateur."}
-        />
+        <AboutMe img={photo} cv={cv} />
         <Timeline />
         <ProjectList projects={projects} />
         <ToolsList toolList={tools} />
-        <SkillsList skills={skills} />
+        <SkillsWheel skills={skills} />
       </main>
       <Footer />
-
     </>
   )
 }
