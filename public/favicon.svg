@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Fond sombre (rappelant le mode sombre du site) -->
+  <rect width="100" height="100" rx="24" fill="#0a0e14" />
+
+  <!-- Bordure avec dégradé -->
+  <rect x="5" y="5" width="90" height="90" rx="20" fill="none" stroke="url(#grad)" stroke-width="4" />
+
+  <!-- Balises de code stylisées -->
+  <path d="M 32 35 L 18 50 L 32 65" fill="none" stroke="url(#grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+  <path d="M 68 35 L 82 50 L 68 65" fill="none" stroke="url(#grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+  
+  <!-- Barre oblique au centre -->
+  <path d="M 58 28 L 42 72" fill="none" stroke="url(#grad)" stroke-width="8" stroke-linecap="round" filter="url(#glow)" />
+</svg>
