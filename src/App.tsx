@@ -86,7 +86,7 @@ function App() {
     {
       category: 'BUT1',
       name: "QIX",
-      technologies: ["Python", "Pygame"],
+      technologies: ["Python"],
       image: qix1,
       link: undefined,
       images: [qix1, qix2, qix3, qix4],
@@ -134,7 +134,7 @@ function App() {
       name: "Réaliser",
       description: "Concevoir, développer et valider des applications complètes en partant des exigences utilisateur jusqu'à la mise en production. Maîtrise du cycle de développement complet avec les technologies modernes.",
       shortDescription: "Concevoir et développer des applications",
-      projects: ["Travia (PHP, MySQL)", "Wikispeed (React, Node.js, WebSocket)", "Portfolio (React)", "QIX (Python, Pygame)"]
+      projects: ["Travia (PHP, MySQL)", "Wikispeed (React, Node.js, WebSocket)", "Portfolio (React)", "QIX (Python)"]
     },
     {
       name: "Optimiser",
